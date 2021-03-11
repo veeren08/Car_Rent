@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  license: MyString
+  PlateNumber: MyString
+  manufacturer: MyString
+  model: MyString
+  hourlyRentalRate: 1.5
+  style: MyString
+  status: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  mobile: MyString
+  user: one
+
+two:
+  license: MyString
+  PlateNumber: MyString
+  manufacturer: MyString
+  model: MyString
+  hourlyRentalRate: 1.5
+  style: MyString
+  status: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  mobile: MyString
+  user: two

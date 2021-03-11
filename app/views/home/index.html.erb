@@ -1,0 +1,30 @@
+<% if user_signed_in? %>
+  <h1>Welcome</h1>
+  <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
+  <hr>
+
+  <div id="hide-button">
+    <%= link_to "JQuery", change_path, :remote => true, class: 'btn btn-success' %>
+  </div>
+  <div id="data"></div>
+  <br>
+ 
+  <%= link_to 'Modal', new_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-info'}  %>
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
+    </div>
+  </div> 
+    
+<% else %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Welcome to our Site</h1>
+        <p>Demo App</p>
+        <ul class="list-unstyled">
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
