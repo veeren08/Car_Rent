@@ -11,18 +11,11 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
       if @user.has_role? :owner
         owners_path
+      elsif @user.has_role? :admin
+        admins_path
+      else
+        root_path
       end
     end
     
-    def new
-        respond_to do |format|
-          format.html
-          format.js
-        end
-      end
-      def change
-        respond_to do |format|               
-          format.js
-        end        
-      end 
 end 
