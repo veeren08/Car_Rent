@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   resources :home
   get '/aboutus', to: 'home#aboutus'
   get '/profile', to: 'home#profile'
-  get '/vehicles', to: 'vehicles#index'
-  get '/owners', to: 'owners#index'
-  get '/admins', to: 'admins#index'
+  
+  resources :vehicles
+  
+  resources :users
+  get '/show', to: 'users#show'
+
+  resources :reservations
+
 end

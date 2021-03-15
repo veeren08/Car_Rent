@@ -1,3 +1,4 @@
+<%# if @user.has_role? :owner %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
       <a class="navbar-brand" href="#"><%= link_to "ArtZone", root_path, class: "nav-link" %></a>
@@ -6,23 +7,64 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
+          <% if has_role?(:owner) %>
+            <li class="nav-item active">
+              <%= link_to "OwnerHome", root_path, class: "nav-link" %>
+                <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Profile", profile_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Show Car", vehicles_path, class: "nav-link" %>
+            </li>
+             <li class="nav-item">
+            <%= link_to "Add Car", new_vehicle_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+           <p class="nav-link" style="color:red;"> <%= link_to('Logout', destroy_user_session_path, :method => :delete, :style => "color:white; text-decoration: none;") %></p>
+            </li>
+
+          <% elsif has_role?(:admin) %>
+            <li class="nav-item active">
+            <%= link_to "AdminHome", root_path, class: "nav-link" %>
               <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-          <%= link_to "Profile", profile_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-         <p class="nav-link" style="color:red;"> <%= link_to('Logout', destroy_user_session_path, :method => :delete, :style => "color:white; text-decoration: none;") %></p>
-          </li>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Profile", profile_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Show Car", vehicles_path, class: "nav-link" %>
+            </li>
+             <li class="nav-item">
+            <%= link_to "Add Car", new_vehicle_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+           <p class="nav-link" style="color:red;"> <%= link_to('Logout', destroy_user_session_path, :method => :delete, :style => "color:white; text-decoration: none;") %></p>
+            </li>
+
+          <% elsif user_signed_in? %>
+            <li class="nav-item active">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+            <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Profile", profile_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Show Car", vehicles_path, class: "nav-link" %>
+            </li>
+             <li class="nav-item">
+            <%= link_to "Reservation", reservations_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+            <p class="nav-link" style="color:red;"> <%= link_to('Logout', destroy_user_session_path, :method => :delete, :style => "color:white; text-decoration: none;") %></p>
+            </li>
+
           <% else %>
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
               <span class="sr-only">(current)</span>
-            </a>
           </li>
           <li class="nav-item">
           <%= link_to "About", aboutus_path, class: "nav-link" %>

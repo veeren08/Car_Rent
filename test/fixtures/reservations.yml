@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  checkouttime: 2021-03-15 09:09:48
+  pickuptime: 2021-03-15 09:09:48
+  expectedreturntime: 2021-03-15 09:09:48
+  returntime: 2021-03-15 09:09:48
+  reservationstatus: MyString
+  user: one
+  vehicle: one
+
+two:
+  checkouttime: 2021-03-15 09:09:48
+  pickuptime: 2021-03-15 09:09:48
+  expectedreturntime: 2021-03-15 09:09:48
+  returntime: 2021-03-15 09:09:48
+  reservationstatus: MyString
+  user: two
+  vehicle: two

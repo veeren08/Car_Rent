@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_113936) do
+ActiveRecord::Schema.define(version: 2021_03_15_033948) do
+
+  create_table "reservations", force: :cascade do |t|
+    t.datetime "checkouttime", null: false
+    t.datetime "pickuptime"
+    t.datetime "expectedreturntime", null: false
+    t.datetime "returntime"
+    t.string "reservationstatus", default: "Awaiting"
+    t.integer "user_id"
+    t.integer "vehicle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+    t.index ["vehicle_id"], name: "index_reservations_on_vehicle_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"

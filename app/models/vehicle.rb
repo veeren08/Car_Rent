@@ -1,5 +1,4 @@
 class Vehicle < ApplicationRecord
-  belongs_to :user
   resourcify
-  
+  belongs_to :user
 end

@@ -1,1 +1,22 @@
-<h1>add vehicle</h1>
+<br>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @vehicle.each do |vehicle| %>
+    <div class="col">
+      <div class="card h-100">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn94mjwfKc2LlgNtN9zy5QKaghdPKDmu4Lzw&usqp=CAU"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%= vehicle.style %> | <%= vehicle.manufacturer %></h5>
+          <p class="card-text">
+            <%= vehicle.PlateNumber %> <br> <%= vehicle.city %> <br> <%= vehicle.state %>
+          </p>
+        </div>
+        <b class="btn btn-primary btn-md float-right"><%= link_to vehicle.status, vehicle, style:"color:white;" %></b>
+      </div>
+    </div>
+  <% end %>
+</div>
+
