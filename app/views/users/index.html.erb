@@ -1,0 +1,16 @@
+
+<% if has_role? :admin %>
+  <div class="container">
+    <table>
+      <tr>
+        <th class="text-center">Email</th>
+      </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to "#{user.email}", user, class:"btn btn-light btn-md" %></td>
+      <td><%= link_to "Edit", edit_user_path(user), class:"btn btn-primary btn-md" %></td>
+    </tr>
+    <% end %>
+  </table>
+  </div>
+<%end%>
