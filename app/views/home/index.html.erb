@@ -1,12 +1,15 @@
 <% if user_signed_in? %>
   <h1>Welcome</h1>
   <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
+
+  <h1>Car Rental Service</h1>
   <hr>
 <% else %>
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
         <h1 class="mt-5">Welcome to our Site</h1>
+        <h2>Car Rental Service</h2>
         <p>Demo App</p>
         <ul class="list-unstyled">
         </ul>

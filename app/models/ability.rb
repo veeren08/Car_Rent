@@ -4,9 +4,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.has_role? :owner
+    if user.has_role? :admin
+        can :create, :update, :destroy, User, :published => true
+        can :create, :update, :destroy, Vehicle, :published => true
+    elsif user.has_role? :owner
+        can :create, :update, :destroy, Vehicle, :published => true
+        can :create, :update, :destroy, Reservation, :published => true
         can :manage, :all
-    else 
+    else
+        can :create, :destroy, Reservation, :published => true
         can :read, :all
     end
 
