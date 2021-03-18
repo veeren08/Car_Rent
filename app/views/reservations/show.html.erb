@@ -1,25 +1,37 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Car Plate Number:</strong>
-  <%=  Vehicle.find(@reservation.vehicle_id).PlateNumber %>
-</p>
-<p>
-  <strong>Checkouttime:</strong>
-  <%= @reservation.checkouttime %>
-</p>
 
-<p>
-  <strong>Reservationstatus:</strong>
-  <%= @reservation.reservationstatus %>
-</p>
+<div class="card border-dark mb-4" style="max-width: 30rem;">
+  <div class="card-header">Car</div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">Primary card title</h5>
+      <p class="card-text">
+      
+        <p>
+          <strong>Car Plate Number:</strong>
+          <%=  Vehicle.find(@reservation.vehicle_id).PlateNumber %>
+        </p>
+        <p>
+          <strong>Checkouttime:</strong>
+          <%= @reservation.checkouttime %>
+        </p>
 
-<% if @reservation.reservationstatus == "Reserved" %>
-    <%= button_to "return", returncar_reservation_path(@reservation), :method => :put %>
-<% end %>
+        <p>
+          <strong>Reservationstatus:</strong>
+          <%= @reservation.reservationstatus %>
+        </p>
 
-<%if has_role?(:admin) || has_role?(:owner) %>
-  <%= link_to 'Delete', @reservation, method: :delete, data: { confirm: "Delete this reservation?" } %> |
-<% elsif user_signed_in? && !["Complete","Cancel"].include?(@reservation.reservationstatus) %>
-  <%= link_to 'Cancel', edit_reservation_path(@reservation) %> |
-<% end %>
-<%= link_to 'Back', reservations_path %>
+        <% if @reservation.reservationstatus == "Reserved" %>
+            <%= button_to "return", returncar_reservation_path(@reservation), :method => :put, class:"btn btn-warning"%>
+        <% end %>
+
+        <%if has_role?(:admin) || has_role?(:owner) %>
+          <%= link_to 'Delete', @reservation, method: :delete, data: { confirm: "Delete this reservation?", class:"btn btn-danger" } %> |
+        <% elsif user_signed_in? && !["Complete","Cancel"].include?(@reservation.reservationstatus) %>
+          <%= link_to 'Cancel', edit_reservation_path(@reservation), class:"btn btn-danger" %>
+        <% end %>
+        <%= link_to 'Back', reservations_path, class:"btn btn-dark" %>
+
+
+      </p>
+  </div>
+</div>
+

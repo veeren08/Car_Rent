@@ -13,7 +13,7 @@ module VehiclesHelper
   	end
   end
 
-  def button_per(vehicle)
+  def button_per
 		has_role?(:owner) || has_role?(:admin)
   end
 

@@ -6,8 +6,8 @@
   <%= render 'cancel', reservation: @reservation %>
 <% end %>
 
-<%= link_to 'Show', @reservation %> |
+<%= link_to 'Show', @reservation, class:"btn btn-info" %> 
 <% if has_role?(:admin) || has_role?(:owner) %>
   <%= link_to 'List', reservations_path %> |
 <% end %>
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class:"btn btn-dark" %>

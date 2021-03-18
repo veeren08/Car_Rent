@@ -50,24 +50,14 @@
         </tr>
       </table>
       <br>
-<<<<<<< HEAD
 
 
-      <% if button_per(@vehicle) %>
+
+      <% if button_per %>
           <%= link_to 'Edit', edit_user_vehicle_path(current_user.id, @vehicle), class:"btn btn-primary btn-md" %> 
           <%= link_to "Delete", user_vehicle_path(@vehicle), method: :delete, data: { confirm: "Delete this vehicle?" }, class:" btn btn-danger btn-md" %> 
       <% else %>
-        <%= link_to 'Reserve', new_reservation_path(:vehicle_id => @vehicle.id) %>
-=======
-      <% if has_role?(:owner) && (current_user.id == @vehicle.user_id) %>
-          <%= link_to 'Edit', edit_vehicle_path(@vehicle), class:"btn btn-primary btn-md" %> 
-          <%= link_to "Delete", @vehicle, method: :delete, data: { confirm: "Delete this vehicle?" }, class:" btn btn-danger btn-md" %> 
-      <% elsif has_role?(:admin) %>
-        <%= link_to 'Edit', edit_vehicle_path(@vehicle), class:"btn btn-primary btn-md" %> 
-        <%= link_to "Delete", @vehicle, method: :delete, data: { confirm: "Delete this vehicle?" }, class:" btn btn-danger btn-md" %> 
-      <% else %>
-        <%= link_to 'Reserve', reservations_path, class:"btn btn-success btn-md" %>&nbsp;&nbsp;
->>>>>>> 23f30da243944c32ee40375d4f5ac27e0ee52e96
+        <%= link_to 'Reserve', new_reservation_path(:vehicle_id => @vehicle.id), class:"btn btn-info btn-md" %>
       <% end %>
       <%= link_to 'Back', :back, class:"btn btn-info btn-md"%>
       <br><br><br>

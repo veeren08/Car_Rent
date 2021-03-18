@@ -1,3 +1,13 @@
+<div class="card border-danger mb-4" style="max-width: 18rem;">
+  <div class="card-header">Car</div>
+  <div class="card-body text-danger">
+    <h5 class="card-title">Primary card title</h5>
+      <p class="card-text">
+        </p>
+      <b class="btn btn-dark btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+  </div>
+</div>
+
 
 <%= form_for @reservation, url: {action: "cancel"}, method: :post do |form| %>
   

@@ -20,10 +20,4 @@ Rails.application.routes.draw do
   patch 'reservations/:id/cancel' => 'reservations#cancel'
   post 'reservations/:id/cancel' => 'reservations#cancel'
   
-  resources :waitinglists do
-    member do
-      put 'cancel'
-    end
-  end
-
 end
