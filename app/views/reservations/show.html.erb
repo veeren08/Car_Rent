@@ -19,7 +19,7 @@
 
 <%if has_role?(:admin) || has_role?(:owner) %>
   <%= link_to 'Delete', @reservation, method: :delete, data: { confirm: "Delete this reservation?" } %> |
-<% elsif user_signed_in? && !["Active","Complete","Cancel"].include?(@reservation.reservationstatus) %>
+<% elsif user_signed_in? && !["Complete","Cancel"].include?(@reservation.reservationstatus) %>
   <%= link_to 'Cancel', edit_reservation_path(@reservation) %> |
 <% end %>
 <%= link_to 'Back', reservations_path %>
