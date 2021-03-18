@@ -1,0 +1,13 @@
+<h1>Editing Reservation</h1>
+
+<% if has_role?(:admin) || has_role?(:owner) %>
+  <%= render 'form', reservation: @reservation %>
+<% else %>
+  <%= render 'cancel', reservation: @reservation %>
+<% end %>
+
+<%= link_to 'Show', @reservation %> |
+<% if has_role?(:admin) || has_role?(:owner) %>
+  <%= link_to 'List', reservations_path %> |
+<% end %>
+<%= link_to "Back", :back %>

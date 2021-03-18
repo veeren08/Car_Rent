@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_many :vehicle
   resourcify
+  has_many :vehicle
+  has_many :reservation
   rolify
-
   
   validates_presence_of :email
   devise :database_authenticatable, :registerable, :recoverable, :rememberable

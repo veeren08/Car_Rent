@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Car Plate Number:</strong>
+  <%=  Vehicle.find(@reservation.vehicle_id).PlateNumber %>
+</p>
+<p>
+  <strong>Checkouttime:</strong>
+  <%= @reservation.checkouttime %>
+</p>
+
+<p>
+  <strong>Reservationstatus:</strong>
+  <%= @reservation.reservationstatus %>
+</p>
+
+<% if @reservation.reservationstatus == "Reserved" %>
+    <%= button_to "return", returncar_reservation_path(@reservation), :method => :put %>
+<% end %>
+
+<%if has_role?(:admin) || has_role?(:owner) %>
+  <%= link_to 'Delete', @reservation, method: :delete, data: { confirm: "Delete this reservation?" } %> |
+<% elsif user_signed_in? && !["Active","Complete","Cancel"].include?(@reservation.reservationstatus) %>
+  <%= link_to 'Cancel', edit_reservation_path(@reservation) %> |
+<% end %>
+<%= link_to 'Back', reservations_path %>

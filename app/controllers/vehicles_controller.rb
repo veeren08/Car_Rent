@@ -1,10 +1,9 @@
 class VehiclesController < ApplicationController
-	
+  # load_and_authorize_resource
+
   def index
-    # if has_role?(:owner)
-    @vehicle= Vehicle.all
-      # @vehicle= current_user.vehicle.all
-    # end
+    @vehicle= Vehicle.all.order("created_at DESC")
+    # @vehicle= current_user.vehicle.all
   end
 
   def new
@@ -24,7 +23,7 @@ class VehiclesController < ApplicationController
     @vehicle = current_user.vehicle.create(vehicle_params)
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to vehicles_path, notice: 'Successfully Added New Car.....' }
+        format.html { redirect_to root_path, notice: 'Successfully Added New Car.....' }
         format.json { render :new, status: :created, location: @vehicle }
       else
         format.html { render :new }
@@ -34,20 +33,20 @@ class VehiclesController < ApplicationController
   end
 
   def update
-    @vehicle = Vehicle.find(params[:id])
+    @vehicle = current_user.vehicle.find(params[:id])
     if @vehicle.update_attributes(vehicle_params)
       flash[:notice] = "Car info updated."
-      redirect_to @vehicle
+      redirect_to root_path
     else
       render :edit
     end
   end
 
   def destroy
-    @vehicle = Vehicle.find(params[:id])
+    @vehicle = current_user.vehicle.find(params[:id])
     @vehicle.destroy
     flash[:alert] = 'Car deleted.'
-    redirect_to vehicles_url
+    redirect_to root_path
   end
 
   # private

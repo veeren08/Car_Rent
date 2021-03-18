@@ -16,10 +16,13 @@
             <%= link_to "Profile", profile_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-            <%= link_to "Show Car", vehicles_path, class: "nav-link" %>
+            <%= link_to "Show Car", user_vehicles_path(current_user.id), class: "nav-link" %>
             </li>
              <li class="nav-item">
-            <%= link_to "Add Car", new_vehicle_path, class: "nav-link" %>
+            <%= link_to "Add Car", new_user_vehicle_path(current_user.id), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Reservation", reservations_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
            <p class="nav-link" style="color:red;"> <%= link_to('Logout', destroy_user_session_path, :method => :delete, :style => "color:white; text-decoration: none;") %></p>
@@ -34,10 +37,16 @@
             <%= link_to "Profile", profile_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-            <%= link_to "Show Car", vehicles_path, class: "nav-link" %>
+            <%= link_to "Add Owner", users_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Show Car",  user_vehicles_path(current_user.id), class: "nav-link" %>
             </li>
              <li class="nav-item">
-            <%= link_to "Add Car", new_vehicle_path, class: "nav-link" %>
+            <%= link_to "Add Car", new_user_vehicle_path(current_user.id), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Reservation", reservations_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
            <p class="nav-link" style="color:red;"> <%= link_to('Logout', destroy_user_session_path, :method => :delete, :style => "color:white; text-decoration: none;") %></p>
@@ -45,16 +54,16 @@
 
           <% elsif user_signed_in? %>
             <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
+            <%= link_to "UserHome", root_path, class: "nav-link" %>
             <span class="sr-only">(current)</span>
             </li>
             <li class="nav-item">
             <%= link_to "Profile", profile_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-            <%= link_to "Show Car", vehicles_path, class: "nav-link" %>
+            <%= link_to "Show Car", user_vehicles_path(current_user.id), class: "nav-link" %>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
             <%= link_to "Reservation", reservations_path, class: "nav-link" %>
             </li>
             <li class="nav-item">

@@ -1,0 +1,19 @@
+
+<%= form_for @reservation, url: {action: "cancel"}, method: :post do |form| %>
+  
+  <%= form.label "Car plate number: " %>
+  <%= Vehicle.find(@reservation.vehicle_id).PlateNumber %><br>
+  
+  <%= form.label "User id and name: " %>
+  <% user = User.find(@reservation.user_id) %>
+  <%= "#{user.id} - #{user.first_name}" %><br>
+  
+  <%= form.label "Check out time:" %><br>
+  <%= @reservation.checkouttime %><br>
+
+  <%= form.label "Expected return time:" %> <br>
+  <%= @reservation.expectedreturntime %><br>
+
+  <%= form.submit "Cancel Reservation", class: "btn btn-primary", data: { confirm: 'Cancel this reservation?' }%><br>
+    
+<% end %>
