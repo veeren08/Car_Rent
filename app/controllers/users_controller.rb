@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
   # load_and_authorize_resource
   
 	before_action :set_user, only: [:show, :edit, :update]
+=======
+  before_action :set_user, only: [:show, :edit, :update]
+>>>>>>> 23f30da243944c32ee40375d4f5ac27e0ee52e96
 
   def index
     @users = User.all
@@ -34,4 +38,8 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, {role_ids: []})
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 23f30da243944c32ee40375d4f5ac27e0ee52e96

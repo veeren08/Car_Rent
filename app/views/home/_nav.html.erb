@@ -42,6 +42,9 @@
             <li class="nav-item">
             <%= link_to "Show Car",  user_vehicles_path(current_user.id), class: "nav-link" %>
             </li>
+            <li class="nav-item">
+            <%= link_to "Add Owner", users_path, class: "nav-link" %>
+            </li>
              <li class="nav-item">
             <%= link_to "Add Car", new_user_vehicle_path(current_user.id), class: "nav-link" %>
             </li>
