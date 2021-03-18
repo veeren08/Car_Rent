@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   Time.zone = 'New Delhi'
 
   def index
-    @reservation = Reservation.all 
+    @reservation = Reservation.all.order("created_at DESC")
   end
 
   def show

@@ -7,6 +7,9 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.label "Profile Image" %>
+          <%= f.file_field :profile_avatar %><br>
+
         <div class="form-group row">
           <div class="col-sm-6">
             <%= f.label :email %><br />

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.all
+    @users = User.all.order("created_at DESC")
   end
 
   def show
@@ -33,3 +33,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, {role_ids: []})
   end
+end

@@ -1,5 +1,9 @@
 <center>
   <div id="formContent">
+      <% if @vehicle.car_avatar.attached? %>
+        <image src="<%=(url_for(@vehicle.car_avatar))%>" height="100%" width="350px">
+      <% end %>
+
     <center>
       <h2>Car Details</h2> 
       <br>

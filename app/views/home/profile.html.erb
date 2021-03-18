@@ -4,6 +4,10 @@
       <%# <div style="width:250px;"> %>
       <h2>Profile</h2>  
       <br>
+          <% if current_user.profile_avatar.attached? %>
+        <image src="<%=(url_for(current_user.profile_avatar))%>" height="200px" width="200px">
+      <% end %>
+
       <table>
         <tr>
           <th>Name</th>

@@ -4,11 +4,9 @@
     <% if showvehicles(vehicle) %> 
       <div class="col">
         <div class="card h-100">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn94mjwfKc2LlgNtN9zy5QKaghdPKDmu4Lzw&usqp=CAU"
-            class="card-img-top"
-            alt="..."
-          />
+          <% if vehicle.car_avatar.attached? %>
+          <image src="<%=(url_for(vehicle.car_avatar))%>">
+            <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= vehicle.style %> | <%= vehicle.manufacturer %></h5>
             <p class="card-text">

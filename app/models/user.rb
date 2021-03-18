@@ -2,6 +2,7 @@ class User < ApplicationRecord
   resourcify
   has_many :vehicle
   has_many :reservation
+  has_one_attached :profile_avatar
   rolify
   
   validates_presence_of :email

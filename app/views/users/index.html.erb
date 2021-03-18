@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 23f30da243944c32ee40375d4f5ac27e0ee52e96
 <% if has_role? :admin %>
   <div class="container">
     <table>
@@ -9,10 +6,20 @@
         <th class="text-center">Email</th>
       </tr>
     <% @users.each do |user| %>
-    <tr>
-      <td><%= link_to "#{user.email}", user, class:"btn btn-light btn-md" %></td>
-      <td><%= link_to "Edit", edit_user_path(user), class:"btn btn-primary btn-md" %></td>
-    </tr>
+    <div class="card bg-light text-dark">
+      <div class="card-body">
+        <% if user.profile_avatar.attached? %>
+        <image src="<%=(url_for(user.profile_avatar))%>" height="80px" width="80px">
+      <% else %>
+      <image src="#" height="80px" width="80px">
+      <% end %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= "#{user.first_name} #{user.first_name}," %>
+      <%= link_to " #{user.email}", user, class:"btn btn-light btn-md" %> 
+      <%= " #{user.mobile} " %> 
+      <%= link_to "Edit", edit_user_path(user), class:"btn btn-primary btn-md float-right" %>
+
+      </div>
+    </div>
     <% end %>
   </table>
   </div>

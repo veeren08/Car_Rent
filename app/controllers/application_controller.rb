@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
     # include LoadAndAuthorizeResource
     protected
       def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :first_name, :last_name, :dateofbirth, :mobile, :city, :country, :zipcode, :address, :password])
-        devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :first_name, :last_name, :dateofbirth, :mobile, :city, :country, :zipcode, :address, :current_password)}
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:profile_avatar, :email, :first_name, :last_name, :dateofbirth, :mobile, :city, :country, :zipcode, :address, :password])
+        devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:profile_avatar, :email, :first_name, :last_name, :dateofbirth, :mobile, :city, :country, :zipcode, :address, :current_password)}
       end
 
     def after_sign_in_path_for(resource)
