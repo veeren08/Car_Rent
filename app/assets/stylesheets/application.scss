@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
-
+ 
+#sticky-footer {
+  flex-shrink: none;
+}
  .nav-link{
     margin-top: 5px;
     font-size: 20px;

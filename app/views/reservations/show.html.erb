@@ -1,14 +1,10 @@
 
 <div class="card border-dark mb-4" style="max-width: 30rem;">
-  <div class="card-header">Car</div>
+  <div class="card-header"><%=  Vehicle.find(@reservation.vehicle_id).style %></div>
   <div class="card-body text-dark">
-    <h5 class="card-title">Primary card title</h5>
+    <h5 class="card-title"><strong>Car Plate Number:</strong>
+          <%=  Vehicle.find(@reservation.vehicle_id).PlateNumber %></h5>
       <p class="card-text">
-      
-        <p>
-          <strong>Car Plate Number:</strong>
-          <%=  Vehicle.find(@reservation.vehicle_id).PlateNumber %>
-        </p>
         <p>
           <strong>Checkouttime:</strong>
           <%= @reservation.checkouttime %>
@@ -29,8 +25,6 @@
           <%= link_to 'Cancel', edit_reservation_path(@reservation), class:"btn btn-danger" %>
         <% end %>
         <%= link_to 'Back', reservations_path, class:"btn btn-dark" %>
-
-
       </p>
   </div>
 </div>

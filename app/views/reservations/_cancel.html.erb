@@ -1,29 +1,28 @@
-<div class="card border-danger mb-4" style="max-width: 18rem;">
-  <div class="card-header">Car</div>
-  <div class="card-body text-danger">
-    <h5 class="card-title">Primary card title</h5>
-      <p class="card-text">
-        </p>
-      <b class="btn btn-dark btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
-  </div>
-</div>
-
-
 <%= form_for @reservation, url: {action: "cancel"}, method: :post do |form| %>
-  
-  <%= form.label "Car plate number: " %>
-  <%= Vehicle.find(@reservation.vehicle_id).PlateNumber %><br>
-  
-  <%= form.label "User id and name: " %>
-  <% user = User.find(@reservation.user_id) %>
-  <%= "#{user.id} - #{user.first_name}" %><br>
-  
-  <%= form.label "Check out time:" %><br>
-  <%= @reservation.checkouttime %><br>
+  <div class="card border-dark mb-4" style="max-width: 30rem;">
+    <div class="card-header"><%= Vehicle.find(@reservation.vehicle_id).style %></div>
+    <div class="card-body text-dark">
+      <h5 class="card-title"><%= form.label "Car plate number: " %>
+        <%= Vehicle.find(@reservation.vehicle_id).PlateNumber %><br></h5>
+      <p class="card-text">
+        <%= form.label "User id and name: " %>
+        <% user = User.find(@reservation.user_id) %>
+        <%= "#{user.id} - #{user.first_name}" %><br>
+              
+        <%= form.label "Check out time:" %><br>
+        <%= @reservation.checkouttime %><br>
 
-  <%= form.label "Expected return time:" %> <br>
-  <%= @reservation.expectedreturntime %><br>
+        <%= form.label "Expected return time:" %> <br>
+        <%= @reservation.expectedreturntime %><br>
 
-  <%= form.submit "Cancel Reservation", class: "btn btn-primary", data: { confirm: 'Cancel this reservation?' }%><br>
-    
+        <%= form.submit "Cancel Reservation", class: "btn btn-danger", data: { confirm: 'Cancel this reservation?' }%><br>
+      </p>
+    </div>
+  </div>
 <% end %>
+
+
+
+
+  
+  

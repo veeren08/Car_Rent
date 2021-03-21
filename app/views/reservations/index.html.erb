@@ -1,94 +1,84 @@
-<br>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-8">
   <% @reservation.each do |re| %>
     <% if has_role?(:admin) %>
-      <% if re.reservationstatus=="Complete" %>
-        <div class="card border-success mb-4" style="max-width: 18rem;">
-          <div class="card-header">Car</div>
-            <div class="card-body text-success">
-      <% end %>
-      <% if re.reservationstatus=="Reserved" %>
-        <div class="card border-info mb-4" style="max-width: 18rem;">
-          <div class="card-header">Car</div>
-            <div class="card-body text-info">
-      <% end %>
-      <% if re.reservationstatus=="Cancel" %>
-        <div class="card border-danger mb-4" style="max-width: 18rem;">
-          <div class="card-header">Car</div>
-            <div class="card-body text-danger">
-      <% end %>
-              <h5 class="card-title">Primary card title</h5>
-                <p class="card-text">
-                  <%= "Status: #{re.reservationstatus}" %><br>
-                  <%= "Name: #{user_name(re)} " %><br>
-                  <%= "Car Owner: #{car_owner(re)} " %><br>
-                  <%= "PlateNumber: #{plat_no(re)} " %>
-                </p>
-                <b class="btn btn-dark btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
-            </div>
+      <div class="col">
+        <div class="card h-100">
+          <% if im(re).car_avatar.attached? %>
+            <image src="<%=(url_for(im(re).car_avatar))%>" width="250px;">
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= "Style: #{style(re)} " %></h5>
+            <p class="card-text">
+                <%= "Status: #{re.reservationstatus}" %><br>
+                <%= "Car Owner: #{car_owner(re)} " %><br>
+                <%= "PlateNumber: #{plat_no(re)} " %>
+            </p>
+          </div>
+          <% if re.reservationstatus=="Complete" %>
+            <b class="btn btn-success btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+          <% end %>
+          <% if re.reservationstatus=="Reserved" %>
+            <b class="btn btn-info btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+          <% end %>
+          <% if re.reservationstatus=="Cancel" %>
+            <b class="btn btn-danger btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+          <% end %>
         </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+      </div>
     <% elsif has_role?(:owner) %>
       <% if owner_per(re) %>
-        <% if re.reservationstatus=="Complete" %>
-          <div class="card border-success mb-4" style="max-width: 18rem;">
-            <div class="card-header">Car</div>
-              <div class="card-body text-success">
-        <% end %>
-        <% if re.reservationstatus=="Reserved" %>
-          <div class="card border-info mb-4" style="max-width: 18rem;">
-            <div class="card-header">Car</div>
-              <div class="card-body text-info">
-        <% end %>
-        <% if re.reservationstatus=="Cancel" %>
-          <div class="card border-danger mb-4" style="max-width: 18rem;">
-            <div class="card-header">Car</div>
-              <div class="card-body text-danger">
-        <% end %>
-                <h5 class="card-title">Primary card title</h5>
-                  <p class="card-text">
-                    <%= "Status: #{re.reservationstatus}" %><br>
-                    <%= "Name: #{user_name(re)} " %><br>
-                    <%= "Car Owner: #{car_owner(re)} " %><br>
-                    <%= "PlateNumber: #{plat_no(re)} " %>
-                  </p>
-                  <b class="btn btn-dark btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
-              </div>
+        <div class="col">
+          <div class="card h-100">
+            <% if im(re).car_avatar.attached? %>
+              <image src="<%=(url_for(im(re).car_avatar))%>" width="250px;">
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= "Style: #{style(re)} " %></h5>
+              <p class="card-text">
+                <%= "Status: #{re.reservationstatus}" %><br>
+                <%= "Car Owner: #{car_owner(re)} " %><br>
+                <%= "PlateNumber: #{plat_no(re)} " %>
+              </p>
+            </div>
+            <% if re.reservationstatus=="Complete" %>
+              <b class="btn btn-success btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+            <% end %>
+            <% if re.reservationstatus=="Reserved" %>
+              <b class="btn btn-info btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+            <% end %>
+            <% if re.reservationstatus=="Cancel" %>
+              <b class="btn btn-danger btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+            <% end %>
           </div>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
       <% end %>
-
     <% else %>
       <% if re.user_id==current_user.id %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if re.reservationstatus=="Complete" %>
-          <div class="card border-success mb-4" style="max-width: 18rem;">
-            <div class="card-header">Car</div>
-              <div class="card-body text-success">
-        <% end %>
-        <% if re.reservationstatus=="Reserved" %>
-          <div class="card border-info mb-4" style="max-width: 18rem;">
-            <div class="card-header">Car</div>
-              <div class="card-body text-info">
-        <% end %>
-        <% if re.reservationstatus=="Cancel" %>
-          <div class="card border-danger mb-4" style="max-width: 18rem;">
-            <div class="card-header">Car</div>
-              <div class="card-body text-danger">
-        <% end %>
-                <h5 class="card-title">Primary card title</h5>
-                  <p class="card-text">
-                    <%= "Status: #{re.reservationstatus}" %><br>
-                    <%= "Name: #{user_name(re)} " %><br>
-                    <%= "Car Owner: #{car_owner(re)} " %><br>
-                    <%= "PlateNumber: #{plat_no(re)} " %>
-                  </p>
-                  <b class="btn btn-dark btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
-              </div>
+        <div class="col">
+          <div class="card h-100">
+            <% if im(re).car_avatar.attached? %>
+              <image src="<%=(url_for(im(re).car_avatar))%>" width="250px;">
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= "Style: #{style(re)} " %></h5>
+              <p class="card-text">
+                <%= "Status: #{re.reservationstatus}" %><br>
+                <%= "Car Owner: #{car_owner(re)} " %><br>
+                <%= "PlateNumber: #{plat_no(re)} " %>
+              </p>
+            </div>
+            <% if re.reservationstatus=="Complete" %>
+              <b class="btn btn-success btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+            <% end %>
+            <% if re.reservationstatus=="Reserved" %>
+              <b class="btn btn-info btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+            <% end %>
+            <% if re.reservationstatus=="Cancel" %>
+              <b class="btn btn-danger btn-md float-right"><%= link_to re.reservationstatus, reservation_path(re.id), style:"color:white;" %></b>
+            <% end %>
           </div>
+        </div>
       <% end %>
     <% end %>
   <% end %>
 </div>
-

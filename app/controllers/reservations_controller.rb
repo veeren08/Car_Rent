@@ -29,6 +29,7 @@ class ReservationsController < ApplicationController
       vehicle = Vehicle.find(@reservation.vehicle_id)
       vehicle.update_attribute(:status, "Reserved")
       @reservation.update_attribute(:reservationstatus, "Reserved")
+      UserMailer.reservation_done(User.find(user_id), Vehicle.find(vehicle_id)).deliver
       redirect_to @reservation
     else
       flash[:danger] = "Can't reserve"
@@ -62,12 +63,12 @@ class ReservationsController < ApplicationController
       user = User.find(@reservation.user_id)
       vehicle = Vehicle.find(@reservation.vehicle_id)
       vehicle.update_attribute(:status, "Available")
-      
       # price = vehicle.hourlyRentalRate
-      # hold_time = (@reservation.returntime - @reservation.checkouttime)/3600.0
-      # rent = 0
+      # @reservation.returntime - @reservation.checkouttime)/3600.0
+      rent = 1000
       # charge = rent + price*hold_time
-      # flash[:success] = '#{charge} Car was successfully returned. Thank you!'
+      flash[:success] = '#{rent} Car was successfully returned. Thank you!'
+      UserMailer.return_car(User.find(@reservation.user_id), Vehicle.find(@reservation.vehicle_id), rent).deliver
       redirect_to @reservation
     end
   end

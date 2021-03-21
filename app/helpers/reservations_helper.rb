@@ -15,6 +15,14 @@ module ReservationsHelper
   def plat_no(re)
     Vehicle.find(re.vehicle_id).PlateNumber
   end
+
+  def style(re)
+    Vehicle.find(re.vehicle_id).style
+  end
+  
+  def im(re)
+    Vehicle.find(re.vehicle_id)
+  end
   # def cancleorcomplete(re)
     # if has_role?(:owner) && current_user.id == Vehile.find(re.vehicle_id).user_id
       # re.reservationstatus == "Complete" || re.reservationstatus == "Cancel" 
