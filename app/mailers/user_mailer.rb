@@ -12,6 +12,21 @@ class UserMailer < ApplicationMailer
         mail(to: @user.email, subject: 'Car Reservation Successful Done')
     end
 
+    def reservation_done_ow(user, vehicle, ow)
+        @user = user
+        @vehicle = vehicle
+        @ow = ow
+        mail(to: @ow.email, subject: 'Car Reservation Successful Done')
+    end
+
+    def return_car_ow(user, vehicle, ow, rent)
+        @user = user
+        @vehicle = vehicle
+        @ow = ow
+        @rent = rent
+        mail(to: @ow.email, subject: 'Car Reservation Successful Done')
+    end
+
     def return_car(user, vehicle, rent)
         @user = user
         @vehicle = vehicle

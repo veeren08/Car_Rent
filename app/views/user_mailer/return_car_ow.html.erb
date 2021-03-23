@@ -4,13 +4,13 @@
         <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
     </head>
     <body>
-        <h1>Hi, <%= @user.first_name %></h1>
-        <p>Your login email is: <%= @user.email %></p>
+        <h1>Hi, Owner: <%= @ow.first_name %> <%= @ow.last_name %></h1>
+        <p>Your login email is: <%= @ow.email %></p>
         <p>Car Plate Number: <%= @vehicle.PlateNumber %> was successfully returned.</p>
         <p>Car style: <%= @vehicle.style %></p>
         <hr>
         <p>Bill : <%= @rent %> </p>
-        <br>
+        <br
         <p>Thanks for joining and have a great day!</p>
     </body>
 </html>

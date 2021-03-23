@@ -6,19 +6,24 @@
           <%=  Vehicle.find(@reservation.vehicle_id).PlateNumber %></h5>
       <p class="card-text">
         <p>
-          <strong>Checkouttime:</strong>
+          <strong>Check Out time:</strong>
           <%= @reservation.checkouttime %>
         </p>
-
         <p>
-          <strong>Reservationstatus:</strong>
+          <strong>Return Time:</strong>
+          <%= @reservation.expectedreturntime %>
+        </p>
+        <p>
+          <strong>Reservation Status:</strong>
           <%= @reservation.reservationstatus %>
         </p>
 
-        <% if @reservation.reservationstatus == "Reserved" %>
-            <%= button_to "return", returncar_reservation_path(@reservation), :method => :put, class:"btn btn-warning"%>
+        
+        <%if has_role?(:admin) || has_role?(:owner) %>
+          <% if @reservation.reservationstatus == "Reserved" %>
+              <%= button_to "return", returncar_reservation_path(@reservation), :method => :put, class:"btn btn-warning"%>
+          <% end %>
         <% end %>
-
         <%if has_role?(:admin) || has_role?(:owner) %>
           <%= link_to 'Delete', @reservation, method: :delete, data: { confirm: "Delete this reservation?", class:"btn btn-danger" } %> |
         <% elsif user_signed_in? && !["Complete","Cancel"].include?(@reservation.reservationstatus) %>

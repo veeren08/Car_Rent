@@ -1,6 +1,8 @@
 <center>
   <div id="formContent">
-      <% if @vehicle.car_avatar.attached? %>
+      <% if @vehicle.video_avatar.attached? %>
+        <%= video_tag (url_for(@vehicle.video_avatar)), :size => "400x260", :controls => true %>
+      <% else %>
         <image src="<%=(url_for(@vehicle.car_avatar))%>" height="100%" width="350px">
       <% end %>
 
@@ -54,7 +56,6 @@
         </tr>
       </table>
       <br>
-
 
 
       <% if button_per %>

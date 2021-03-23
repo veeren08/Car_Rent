@@ -1,5 +1,5 @@
 <%# if @user.has_role? :owner %>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" style="height: 60px;">
       <a class="navbar-brand" href="#"><%= link_to "CarZone", root_path, class: "nav-link" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,23 +11,20 @@
               <%= link_to "OwnerHome", root_path, class: "nav-link" %>
                 <span class="sr-only">(current)</span>
             </li>
+  
+            <li class="nav-item">
+            <%= link_to "Cars", user_vehicles_path(current_user.id), class: "nav-link", :style => "color:white;" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Reservation", reservations_path, class: "nav-link", :style => "color:white;" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Profile", profile_path, class: "nav-link", :style => "color:white;" %>
+            </li>
             <li class="nav-item active">
-                <% if current_user.profile_avatar.attached? %>
-          <image src="<%=(url_for(current_user.profile_avatar))%>" style="border-radius: 50%; margin-right: -10px;" height="100%" width="70px">
-            <% end %>
-            </li>
-
-            <li class="nav-item">
-            <%= link_to "Profile", profile_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-            <%= link_to "Show Car", user_vehicles_path(current_user.id), class: "nav-link" %>
-            </li>
-             <li class="nav-item">
-            <%= link_to "Add Car", new_user_vehicle_path(current_user.id), class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-            <%= link_to "Reservation", reservations_path, class: "nav-link" %>
+              <% if current_user.profile_avatar.attached? %>
+                <image src="<%=(url_for(current_user.profile_avatar))%>" style="border-radius: 50%; margin-top:10px;" height="50px;" width="50px">
+              <% end %>
             </li>
             <li class="nav-item">
            <p class="nav-link" style="color:red;"> <%= link_to('Logout', destroy_user_session_path, :method => :delete, :style => "color:white; text-decoration: none;") %></p>
@@ -39,23 +36,20 @@
               <span class="sr-only">(current)</span>
             </li>
             <li class="nav-item">
-            <%= link_to "Profile", profile_path, class: "nav-link" %>
+            <%= link_to "Owners", users_path, class: "nav-link", :style => "color:white;" %>
             </li>
             <li class="nav-item">
-            <%= link_to "Add Owner", users_path, class: "nav-link" %>
+            <%= link_to "Cars",  user_vehicles_path(current_user.id), class: "nav-link", :style => "color:white;" %>
             </li>
             <li class="nav-item">
-            <%= link_to "Show Car",  user_vehicles_path(current_user.id), class: "nav-link" %>
+            <%= link_to "Reservation", reservations_path, class: "nav-link", :style => "color:white;" %>
             </li>
             <li class="nav-item">
-            <%= link_to "Add Owner", users_path, class: "nav-link" %>
+            <%= link_to "Profile", profile_path, class: "nav-link", :style => "color:white;" %>
             </li>
-             <li class="nav-item">
-            <%= link_to "Add Car", new_user_vehicle_path(current_user.id), class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-            <%= link_to "Reservation", reservations_path, class: "nav-link" %>
-            </li>
+            <% if current_user.profile_avatar.attached? %>
+              <image src="<%=(url_for(current_user.profile_avatar))%>" style="border-radius: 50%;margin-top:10px;" height="50px;" width="50px">
+            <% end %>
             <li class="nav-item">
            <p class="nav-link" style="color:red;"> <%= link_to('Logout', destroy_user_session_path, :method => :delete, :style => "color:white; text-decoration: none;") %></p>
             </li>
@@ -66,14 +60,17 @@
             <span class="sr-only">(current)</span>
             </li>
             <li class="nav-item">
-            <%= link_to "Profile", profile_path, class: "nav-link" %>
+            <%= link_to "Cars", user_vehicles_path(current_user.id), class: "nav-link", :style => "color:white;" %>
             </li>
             <li class="nav-item">
-            <%= link_to "Show Car", user_vehicles_path(current_user.id), class: "nav-link" %>
+            <%= link_to "Reservation", reservations_path, class: "nav-link", :style => "color:white;" %>
             </li>
             <li class="nav-item">
-            <%= link_to "Reservation", reservations_path, class: "nav-link" %>
+            <%= link_to "Profile", profile_path, class: "nav-link", :style => "color:white;" %>
             </li>
+            <% if current_user.profile_avatar.attached? %>
+                <image src="<%=(url_for(current_user.profile_avatar))%>" style="border-radius: 50%;margin-top:10px;" height="50px;" width="50px">
+            <% end %>
             <li class="nav-item">
             <p class="nav-link" style="color:red;"> <%= link_to('Logout', destroy_user_session_path, :method => :delete, :style => "color:white; text-decoration: none;") %></p>
             </li>
@@ -84,10 +81,10 @@
               <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
-          <%= link_to "About", aboutus_path, class: "nav-link" %>
+          <%= link_to "About", aboutus_path, class: "nav-link", :style => "color:white;" %>
           </li>
           <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link", :style => "color:white;" %>
           </li>
           <% end %>
         </ul>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+        <h1>Hi, <%= @ow.first_name %></h1>
+        <p>Your login email is: <%= @ow.email %></p>
+        <p>The Car Plate Number: <%= @vehicle.PlateNumber %>) Reservation Successful.</p>
+        <p>The Car Style: <%= @vehicle.style %></p>
+        <p>Be Ready Customer can pick Car very soon</p>
+        <hr>
+        <h5>Customer Details:</h5>
+        <p>Name: <%= @user.first_name %><%= @user.last_name %></p>
+        <p>Contact: <%= @user.mobile %></p>
+
+        <p>Please Check License before take over the car.</p>
+        <p>Thanks for joining and have a great day!</p>
+    </body>
+</html>

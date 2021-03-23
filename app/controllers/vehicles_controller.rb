@@ -52,7 +52,7 @@ class VehiclesController < ApplicationController
   # private
   private
     def vehicle_params
-      params.require(:vehicle).permit(:car_avatar, :license, :PlateNumber, :manufacturer, :model, :hourlyRentalRate, :style, :status, :city, :state, :country, :mobile)
+      params.require(:vehicle).permit(:video_avatar, :car_avatar, :license, :PlateNumber, :manufacturer, :model, :hourlyRentalRate, :style, :status, :city, :state, :country, :mobile)
     end
   
 end

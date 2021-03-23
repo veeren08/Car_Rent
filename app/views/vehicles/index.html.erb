@@ -1,3 +1,7 @@
+<% if has_role?(:owner) or has_role?(:admin) %>
+  <%= link_to "Add New Car", new_user_vehicle_path(current_user.id), class: "btn btn-primary btn-md" %>
+  <hr>
+<% end %>
 <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-8">
   <% @vehicle.each do |vehicle| %>
     <% if showvehicles(vehicle) %> 
