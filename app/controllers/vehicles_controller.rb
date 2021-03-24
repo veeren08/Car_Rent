@@ -6,6 +6,14 @@ class VehiclesController < ApplicationController
     # @vehicle= current_user.vehicle.all
   end
 
+  # def reserve
+  #   @vehicle = Vehicle.find(params[:id])
+  #   # session[:id]= @vehicle.id
+  #   respond_to do |format|
+  #     format.html { render :template => "vehicles/reserve" }
+  #   end
+  # end
+  
   def new
     @vehicle = Vehicle.new
   end

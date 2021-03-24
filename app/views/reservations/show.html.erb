@@ -18,7 +18,6 @@
           <%= @reservation.reservationstatus %>
         </p>
 
-        
         <%if has_role?(:admin) || has_role?(:owner) %>
           <% if @reservation.reservationstatus == "Reserved" %>
               <%= button_to "return", returncar_reservation_path(@reservation), :method => :put, class:"btn btn-warning"%>

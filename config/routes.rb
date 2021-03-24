@@ -5,13 +5,18 @@ Rails.application.routes.draw do
   get '/aboutus', to: 'home#aboutus'
   get '/profile', to: 'home#profile'
   
+  # get '/reserve' => 'vehicle#reserve'
+  # get 'vehicle/:id/reserve' => 'vehicle#reserve'
   resources :users do
-  	resources :vehicles
+  	resources :vehicles do
+      resources :reserves
+    end
   end
+
+  # resources :reserves
 
   resources :reservations do
   	member do
-      put 'pickup'
       put 'returncar'
       put 'cancel'
     end

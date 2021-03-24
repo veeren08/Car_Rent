@@ -59,8 +59,9 @@
 
 
       <% if button_per %>
-          <%= link_to 'Edit', edit_user_vehicle_path(current_user.id, @vehicle), class:"btn btn-primary btn-md" %> 
-          <%= link_to "Delete", user_vehicle_path(@vehicle), method: :delete, data: { confirm: "Delete this vehicle?" }, class:" btn btn-danger btn-md" %> 
+      <%= link_to 'Reserve', user_vehicle_reserves_path(:vehicle_id => @vehicle.id), class:"btn btn-warning btn-md" %></td>
+        <%= link_to 'Edit', edit_user_vehicle_path(current_user.id, @vehicle), class:"btn btn-primary btn-md" %> 
+        <%= link_to "Delete", user_vehicle_path(@vehicle), method: :delete, data: { confirm: "Delete this vehicle?" }, class:" btn btn-danger btn-md" %> 
       <% else %>
         <%= link_to 'Reserve', new_reservation_path(:vehicle_id => @vehicle.id), class:"btn btn-info btn-md" %>
       <% end %>

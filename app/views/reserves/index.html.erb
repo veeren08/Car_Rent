@@ -1,0 +1,26 @@
+<h4>PlateNumber: <%= @ve.PlateNumber %></h4>
+<span>
+  <% if @ve.car_avatar.attached? %>
+    <image src="<%=(url_for(@ve.car_avatar))%>" height="100%" width="300px">
+  <% end %>
+</span>
+<hr>
+
+<% if has_role?(:owner) or has_role?(:admin) %>
+  <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-8">
+    <% @reservation.each do |reservation| %>
+      <% if showreserve(reservation, @ve) %>
+        <div class="col">
+          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Status: <%= reservation.reservationstatus %></div>
+              <div class="card-body">
+                <p class="card-text">Customer: <strong><%= User.find(reservation.user_id).first_name %></strong></p>
+                <p class="card-text">Contact: <%= User.find(reservation.user_id).mobile %></p>
+                <i class="card-text">Hourly Rent: <%= Vehicle.find(reservation.vehicle_id).hourlyRentalRate %></i>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
