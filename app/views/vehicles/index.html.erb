@@ -3,13 +3,13 @@
   <hr>
 <% end %>
 <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-8">
-  <% @vehicle.each do |vehicle| %>
-    <% if showvehicles(vehicle) %> 
+  <% @vehicles.each do |vehicle| %>
+    <%# if showvehicles(vehicle) %> 
       <div class="col">
         <div class="card h-100">
           <% if vehicle.car_avatar.attached? %>
           <image src="<%=(url_for(vehicle.car_avatar))%>">
-            <% end %>
+            <% end %> 
           <div class="card-body">
             <h5 class="card-title"><%= vehicle.style %> | <%= vehicle.manufacturer %></h5>
             <p class="card-text">
@@ -19,7 +19,7 @@
           <b class="btn btn-primary btn-md float-right"><%= link_to vehicle.status, user_vehicle_path(current_user.id, vehicle.id), style:"color:white;" %></b>
         </div>
       </div>
-    <% end %>
+    <%# end %>
   <% end %>
 </div>
 
